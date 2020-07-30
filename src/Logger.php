@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PSR3;
+namespace Serega170584\PSR3;
 
 /**
  * Minimalist PSR-3 logger designed to write in stderr or any other stream.

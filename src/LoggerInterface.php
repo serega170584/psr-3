@@ -1,6 +1,6 @@
 <?php
 
-namespace PSR3;
+namespace Serega170584\PSR3;
 
 /**
  * Describes a logger instance.

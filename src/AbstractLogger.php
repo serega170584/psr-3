@@ -1,8 +1,6 @@
 <?php
 
-namespace PSR3;
-
-use mysql_xdevapi\Warning;
+namespace Serega170584\PSR3;
 
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.
@@ -47,4 +45,5 @@ abstract class AbstractLogger implements LoggerInterface
         }
         throw new \BadMethodCallException('Call to undefined method ' . get_class($this) . '::' . $method . '()');
     }
+
 }
