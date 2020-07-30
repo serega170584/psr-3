@@ -1,0 +1,27 @@
+{
+    "name": "serega170584/psr3",
+    "description": "Package for using psr-3",
+    "type": "library",
+    "keywords": [
+        "psr",
+        "3"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Krivщищлщм",
+            "email": "serega170584@gmail.com",
+            "homepage": "https://github.com/serega170584/psr-3",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Klisl\\Widgets\\": "src"
+        }
+    }
+}
