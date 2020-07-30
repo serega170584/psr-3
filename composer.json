@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Klisl\\Widgets\\": "src"
+            "Serega170584\\PSR3\\": "src"
         }
     }
 }
