@@ -1,5 +1,5 @@
 {
-    "name": "serega170584/psr3",
+    "name": "serega170584/psr-3",
     "description": "Package for using psr-3",
     "type": "library",
     "keywords": [
@@ -9,7 +9,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Sergey Krivщищлщм",
+            "name": "Sergey Krivobokov",
             "email": "serega170584@gmail.com",
             "homepage": "https://github.com/serega170584/psr-3",
             "role": "Developer"
