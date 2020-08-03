@@ -109,15 +109,4 @@ interface LoggerInterface
      * @return void
      */
     public function debug($message, array $context = array());
-
-    /**
-     * Logs with an arbitrary level.
-     *
-     * @param mixed $level
-     * @param string $message
-     * @param mixed[] $context
-     *
-     * @return void
-     */
-    public function log($level, $message, array $context = array());
 }

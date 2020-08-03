@@ -23,7 +23,6 @@ class Logger extends AbstractLogger
         }
     }
 
-
     /**
      * @inheritDoc
      */
@@ -40,7 +39,7 @@ class Logger extends AbstractLogger
         }
     }
 
-    private function format(string $level, string $message, array $context, bool $prefixDate = true): string
+    public function format(string $level, string $message, array $context, bool $prefixDate = true): string
     {
         if (false !== strpos($message, '{')) {
             $replacements = [];

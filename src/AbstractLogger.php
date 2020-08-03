@@ -17,7 +17,7 @@ namespace Serega170584\PSR3;
  * @method info($message, array $context = array())
  * @method debug($message, array $context = array())
  */
-abstract class AbstractLogger implements LoggerInterface
+abstract class AbstractLogger
 {
     const DEBUG = 'debug';
     const INFO = 'info';
@@ -40,10 +40,33 @@ abstract class AbstractLogger implements LoggerInterface
 
     public function __call($method, $args)
     {
-        if (in_array($method, self::LEVELS)) {
-            $this->log($method, $args);
+        $interface = new \ReflectionClass('\Serega170584\PSR3\LoggerInterface');
+        $searchedMethod = array_filter(array_map(function ($val) use ($method) {
+            $res = false;
+            /**
+             * @var \ReflectionMethod $val
+             */
+            if ($val->getName() == $method) {
+                $res = $method;
+            }
+            return $res;
+        }, $interface->getMethods()));
+        if ($searchedMethod){
+            $searchedMethod=array_shift($searchedMethod);
+            $this->log($searchedMethod, $args);
+        } else {
+            throw new \BadMethodCallException('Call to undefined method ' . get_class($this) . '::' . $method . '()');
         }
-        throw new \BadMethodCallException('Call to undefined method ' . get_class($this) . '::' . $method . '()');
     }
 
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed $level
+     * @param string $message
+     * @param mixed[] $context
+     *
+     * @return void
+     */
+    abstract protected function log($level, $message, array $context = array());
 }
