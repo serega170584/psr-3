@@ -25,8 +25,8 @@ class LoggerTest extends TestCase
             $logMessage = 'log';
             $this->assertEquals("[{$logType}] {$logMessage}" . PHP_EOL, $this->logger->format($logType, $logMessage, [], false));
 
-            $placeholderLogMessage = "{$logMessage} {test} {scalar_int} {scalar_float} {scalar_string} {scalar_boolean} {scalar_boolean_false}";
-            $logMessage .= '  1 1.01 123 1 ';
+            $placeholderLogMessage = "{$logMessage} {test} {scalar_int} {scalar_float} {scalar_string} {scalar_boolean} {scalar_boolean_false} {object} {simple_object}";
+            $logMessage .= '  1 1.01 123 1  123 [object stdClass]';
             $handle = fopen(__DIR__ . DIRECTORY_SEPARATOR . 'StdObject.php', 'r');
             $context = [
                 'test' => null,
@@ -36,6 +36,7 @@ class LoggerTest extends TestCase
                 'scalar_boolean' => true,
                 'scalar_boolean_false' => false,
                 'object' => new StdObject(),
+                'simple_object' => new \stdClass()
 //                'date_time' => (new \DateTime())->format(\DateTime::RFC3339),
 //                'resource'=> $handle
             ];
