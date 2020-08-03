@@ -20,8 +20,10 @@ class LoggerTest extends TestCase
 
     public function testFormat()
     {
-        $logType = AbstractLogger::ALERT;
-        $logMessage = 'log';
-        $this->assertEquals("[{$logType}] {$logMessage}", $this->logger->format($logType, $logMessage, [], false));
+        array_map(function ($val) {
+            $logType = $val;
+            $logMessage = 'log';
+            $this->assertEquals("[{$logType}] {$logMessage}" . PHP_EOL, $this->logger->format($logType, $logMessage, [], false));
+        }, array_keys(AbstractLogger::LEVELS));
     }
 }
