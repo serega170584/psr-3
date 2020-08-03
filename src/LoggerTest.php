@@ -22,6 +22,6 @@ class LoggerTest extends TestCase
     {
         $logType = AbstractLogger::ALERT;
         $logMessage = 'log';
-        $this->assertEquals("[{$logType}] {$logMessage}", $this->logger->format($logType, $logMessage), [], false);
+        $this->assertEquals("[{$logType}] {$logMessage}", $this->logger->format($logType, $logMessage, [], false));
     }
 }
