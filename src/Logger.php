@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Serega170584\PSR3;
 
 /**

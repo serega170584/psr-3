@@ -35,7 +35,7 @@ class LoggerTest extends TestCase
                 'scalar_string' => '123',
                 'scalar_boolean' => true,
                 'scalar_boolean_false' => false,
-//                'object' => new \StdObject(),
+                'object' => new StdObject(),
 //                'date_time' => (new \DateTime())->format(\DateTime::RFC3339),
 //                'resource'=> $handle
             ];

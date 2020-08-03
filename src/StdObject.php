@@ -1,4 +1,5 @@
 <?php
+namespace Serega170584\PSR3;
 
 class StdObject
 {
