@@ -51,9 +51,9 @@ abstract class AbstractLogger
             }
             return $res;
         }, $interface->getMethods()));
-        if ($searchedMethod){
-            $searchedMethod=array_shift($searchedMethod);
-            $this->log($searchedMethod, $args);
+        if ($searchedMethod) {
+            $searchedMethod = array_shift($searchedMethod);
+            $this->log($searchedMethod, $args[0]);
         } else {
             throw new \BadMethodCallException('Call to undefined method ' . get_class($this) . '::' . $method . '()');
         }

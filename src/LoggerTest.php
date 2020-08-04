@@ -15,7 +15,7 @@ class LoggerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->logger = new Logger();
+        $this->logger = new Logger('php://output');
     }
 
     public function testFormat()
@@ -46,6 +46,29 @@ class LoggerTest extends TestCase
             $this->assertEquals($logMessage, $this->logger->format($logType, $placeholderLogMessage, $context, false));
             $logMessage = "{$dateTimeStr} {$logMessage}";
             $this->assertEquals($logMessage, $this->logger->format($logType, $placeholderLogMessage, $context));
+        }, array_keys(AbstractLogger::LEVELS));
+    }
+
+    public function testLogLevelSpecificMethods()
+    {
+        array_map(function ($val) {
+            ob_start();
+            /**
+             * @uses \Serega170584\PSR3\AbstractLogger::emergency()
+             * @uses \Serega170584\PSR3\AbstractLogger::alert()
+             * @uses \Serega170584\PSR3\AbstractLogger::critical()
+             * @uses \Serega170584\PSR3\AbstractLogger::error()
+             * @uses \Serega170584\PSR3\AbstractLogger::warning()
+             * @uses \Serega170584\PSR3\AbstractLogger::notice()
+             * @uses \Serega170584\PSR3\AbstractLogger::info()
+             * @uses \Serega170584\PSR3\AbstractLogger::debug()
+             */
+            $this->logger->{$val}('123');
+            $dateTime = new \DateTime();
+            $dateTimeStr = $dateTime->format(\DateTime::RFC3339);
+            $content = ob_get_contents();
+            ob_end_clean();
+            $this->assertEquals("{$dateTimeStr} [{$val}] 123" . PHP_EOL, $content);
         }, array_keys(AbstractLogger::LEVELS));
     }
 }

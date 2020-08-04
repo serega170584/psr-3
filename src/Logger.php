@@ -1,4 +1,5 @@
 <?php
+
 namespace Serega170584\PSR3;
 
 /**
@@ -47,20 +48,28 @@ class Logger extends AbstractLogger
                 } elseif ($val instanceof \DateTimeInterface) {
                     $replacements["{{$key}}"] = $val->format(\DateTime::RFC3339);
                 } elseif (\is_object($val)) {
-                    $replacements["{{$key}}"] = '[object '.\get_class($val).']';
+                    $replacements["{{$key}}"] = '[object ' . \get_class($val) . ']';
                 } else {
-                    $replacements["{{$key}}"] = '['.\gettype($val).']';
+                    $replacements["{{$key}}"] = '[' . \gettype($val) . ']';
                 }
             }
 
             $message = strtr($message, $replacements);
         }
 
-        $log = sprintf('[%s] %s', $level, $message).PHP_EOL;
+        $log = sprintf('[%s] %s', $level, $message) . PHP_EOL;
         if ($prefixDate) {
-            $log = date(\DateTime::RFC3339).' '.$log;
+            $log = date(\DateTime::RFC3339) . ' ' . $log;
         }
 
         return $log;
+    }
+
+    /**
+     * @return false|resource
+     */
+    public function getHandle()
+    {
+        return $this->handle;
     }
 }
